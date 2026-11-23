@@ -1,0 +1,768 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --navy: #00356E;
+    --gray: #CACACA;
+    --green: #5DA709;
+    --red: #C80811;
+    --yellow: #FFB43B;
+
+    --page: #E7E7E7;
+    --surface: #F0F0F0;
+    --surface-alt: #DEDEDE;
+    --border: #B9B9B9;
+    --text: #00356E;
+    --muted: #555D66;
+    --shadow: 0 5px 18px rgba(0,35,75,.10);
+}
+
+html, body {
+    margin: 0;
+    min-height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
+    background: var(--page);
+    -webkit-font-smoothing: antialiased;
+}
+
+button {
+    font: inherit;
+}
+
+.topbar {
+    height: 76px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px 0 6.9%;
+    z-index: 5;
+    border-bottom: 3px solid var(--yellow);
+    box-shadow: 0 3px 12px rgba(255, 255, 255, 0.16);
+}
+
+.brand img {
+    width: 331px;
+    height: 60px;
+    object-fit: contain;
+    object-position: left center;
+    display: block;
+}
+
+.top-actions {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    height: 100%;
+}
+
+.top-actions button {
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+.top-icon {
+    width: 34px;
+    height: 36px;
+    position: relative;
+    padding: 0;
+}
+
+/* FIRST ICON — DEVICE */
+.top-icon svg {
+    width: 29px;
+    height: 29px;
+    fill: none;
+    stroke: var(--navy);
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* SECOND ICON — GLOBE */
+.globe-icon svg {
+    stroke: var(--green);
+    stroke-width: 1.7;
+}
+
+/* NOTIFICATION INDICATOR */
+.globe-icon i {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #C80811;
+    right: 1px;
+    top: 1px;
+    border: 2px solid #ffffff;
+}
+
+.user-menu {
+    font-size: 13px;
+    color: var(--navy);
+    letter-spacing: .1px;
+    white-space: nowrap;
+    padding: 10px 0;
+}
+
+.user-menu span {
+    font-size: 12px;
+    color: var(--yellow);
+}
+
+/* =====================================================
+   LEFT SIDEBAR NAVIGATION
+   ===================================================== */
+
+.sidebar {
+    position: fixed;
+    top: 76px;
+    bottom: 0;
+    left: 0;
+    width: 96px;
+    background: var(--navy);
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgba(202,202,202,.28);
+    padding-top: 12px;
+}
+
+.nav-item {
+    position: relative;
+    height: 84px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray);
+    transition: background .18s ease, transform .18s ease;
+    border-bottom: 1px solid rgba(202,202,202,.13);
+}
+
+.nav-item svg {
+    width: 31px;
+    height: 31px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform .18s ease;
+}
+
+/* INDIVIDUAL SIDEBAR ICON COLORS */
+
+.nav-item:nth-child(1) {
+    color: var(--yellow);
+}
+
+.nav-item:nth-child(2) {
+    color: var(--green);
+}
+
+.nav-item:nth-child(3) {
+    color: var(--red);
+}
+
+.nav-item:nth-child(4) {
+    color: var(--yellow);
+}
+
+.nav-item:nth-child(5) {
+    color: var(--gray);
+}
+
+/* SIDEBAR LABELS */
+
+.nav-item span {
+    color: var(--gray);
+}
+
+/* HOVER EFFECT */
+
+.nav-item:hover {
+    background: rgba(202,202,202,.13);
+}
+
+.nav-item:hover svg {
+    transform: translateY(-2px);
+}
+
+/* ACTIVE NAVIGATION */
+
+.nav-item.active {
+    background: var(--gray);
+    box-shadow: inset 4px 0 0 var(--yellow);
+}
+
+.nav-item.active span {
+    color: var(--navy);
+}
+
+/* =====================================================
+   MAIN DASHBOARD
+   ===================================================== */
+
+.dashboard {
+    margin-left: 96px;
+    padding: 76px 0 40px;
+    min-height: 100vh;
+}
+
+/* FILTER SECTION */
+
+.filter-row {
+    height: 105px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    color: var(--navy);
+    font-size: 16px;
+    font-weight: 700;
+    position: relative;
+}
+
+.filter-divider {
+    font-weight: 400;
+    color: var(--red);
+}
+
+.filter-row button {
+    border: 0;
+    background: none;
+    color: var(--navy);
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 7px 0;
+}
+
+.chevron {
+    font-size: 13px;
+    margin-left: 6px;
+    color: var(--green);
+}
+
+/* FILTER DROPDOWN */
+
+.filter-menu {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: calc(50% + 75px);
+    background: var(--surface);
+    box-shadow: 0 8px 24px rgba(0,35,75,.18);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    min-width: 165px;
+    z-index: 3;
+    padding: 6px;
+}
+
+.filter-menu.open {
+    display: block;
+}
+
+.filter-menu button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 4px;
+    color: var(--navy);
+}
+
+.filter-menu button:hover {
+    background: var(--gray);
+}
+
+/* =====================================================
+   DASHBOARD COLUMNS
+   ===================================================== */
+
+.columns {
+    width: min(1412px, calc(100% - 70px));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 326px minmax(420px,688px) 326px;
+    gap: 30px;
+    align-items: start;
+}
+
+/* COMMON CARD DESIGN */
+
+.profile-card,
+.post-card,
+.panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+/* =====================================================
+   STUDENT PROFILE CARD
+   ===================================================== */
+
+.profile-card {
+    min-height: 248px;
+    text-align: center;
+    padding: 20px 12px;
+    border-top: 4px solid var(--green);
+}
+
+.profile-photo {
+    width: 116px;
+    height: 116px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 22px;
+    border: 3px solid var(--gray);
+    background: #f3f3f3;
+    box-shadow: inset 0 0 0 1px rgba(0,53,110,.08);
+}
+
+.profile-card h2 {
+    font-size: 15px;
+    line-height: 21px;
+    margin: 0 0 8px;
+    font-weight: 700;
+    color: var(--navy);
+}
+
+.profile-card p {
+    font-size: 14px;
+    margin: 0;
+    color: var(--muted);
+}
+
+/* =====================================================
+   SCHOOL POSTS / FEED
+   ===================================================== */
+
+.feed {
+    min-width: 0;
+}
+
+.post-card {
+    padding: 25px 25px 0;
+    overflow: hidden;
+    border-top: 4px solid var(--yellow);
+}
+
+.post-heading {
+    min-height: 88px;
+    display: flex;
+    align-items: flex-start;
+    gap: 17px;
+}
+
+.post-avatar {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    margin-top: 0;
+}
+
+.post-heading h1 {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 6px 0 8px;
+    color: var(--navy);
+}
+
+.post-heading p {
+    font-size: 13px;
+    margin: 0;
+    color: var(--muted);
+}
+
+.tiny-clock {
+    font-size: 16px;
+    color: var(--green);
+    vertical-align: -1px;
+}
+
+.globe-small {
+    font-size: 15px;
+    color: var(--navy);
+}
+
+.post-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* =====================================================
+   RIGHT SIDEBAR
+   ===================================================== */
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.panel {
+    padding: 20px 22px;
+}
+
+.panel h2 {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0 0 23px;
+    color: var(--navy);
+}
+
+/* =====================================================
+   SCHOOL CALENDAR
+   ===================================================== */
+
+.calendar-panel {
+    min-height: 399px;
+    border-top: 4px solid var(--red);
+}
+
+.event {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 17px;
+}
+
+/* CALENDAR DATE BOX */
+
+.date-box {
+    width: 76px;
+    height: 76px;
+    flex: 0 0 76px;
+    background: var(--navy);
+    color: var(--yellow);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.date-box span {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .3px;
+}
+
+.date-box b {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--gray);
+}
+
+.event-info {
+    min-width: 0;
+}
+
+.event-info h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--navy);
+}
+
+.event-info p {
+    font-size: 13px;
+    margin: 0;
+    font-weight: 700;
+}
+
+.holiday {
+    color: var(--red);
+}
+
+.all-day {
+    color: var(--green);
+}
+
+/* VIEW MORE BUTTON */
+
+.view-more {
+    display: block;
+    margin: 3px auto 0;
+    border: 0;
+    background: none;
+    color: var(--navy);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 5px;
+}
+
+.view-more:hover {
+    background: var(--gray);
+}
+
+/* EXTRA CALENDAR EVENTS */
+
+.extra-events {
+    display: none;
+    font-size: 13px;
+    color: var(--navy);
+    padding-top: 8px;
+}
+
+.extra-events.open {
+    display: block;
+}
+
+.extra-events p {
+    margin: 7px 0;
+    padding: 8px 9px;
+    background: var(--surface-alt);
+    border-radius: 4px;
+}
+
+/* =====================================================
+   CLASS ACTIVITY
+   ===================================================== */
+
+.activity-panel {
+    min-height: 220px;
+    border-top: 4px solid var(--green);
+}
+
+.activity-panel h2 {
+    margin-bottom: 27px;
+}
+
+.activity-date {
+    font-size: 19px;
+    line-height: 23px;
+    margin: 0 0 14px;
+    color: var(--navy);
+}
+
+/* ASSIGNMENT CARD */
+
+.assignment {
+    background: var(--green);
+    color: #F0F0F0;
+    font-size: 13px;
+    line-height: 23px;
+    font-weight: 700;
+    padding: 13px 12px;
+    min-height: 108px;
+    border-left: 4px solid var(--yellow);
+    border-radius: 4px;
+}
+
+/* =====================================================
+   STATUS COLORS
+   ===================================================== */
+
+.status-success {
+    color: var(--green);
+    background: var(--surface-alt);
+}
+
+.status-danger {
+    color: var(--red);
+    background: var(--surface-alt);
+}
+
+.status-warning {
+    color: var(--navy);
+    background: var(--yellow);
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN — TABLETS
+   ===================================================== */
+
+@media (max-width: 1450px) {
+
+    .columns {
+        grid-template-columns:
+            minmax(230px,.95fr)
+            minmax(420px,2fr)
+            minmax(250px,.95fr);
+        gap: 24px;
+        width: calc(100% - 48px);
+    }
+
+    .post-card {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+}
+
+@media (max-width: 1050px) {
+
+    .columns {
+        grid-template-columns: 250px minmax(0,1fr);
+    }
+
+    .right-column {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .profile-card {
+        min-height: 248px;
+    }
+
+    .topbar {
+        padding-left: 110px;
+    }
+
+    .brand img {
+        width: 280px;
+    }
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN — MOBILE
+   ===================================================== */
+
+@media (max-width: 700px) {
+
+    .topbar {
+        height: 65px;
+        padding: 0 12px 0 78px;
+    }
+
+    .brand img {
+        width: min(230px,48vw);
+        height: 54px;
+    }
+
+    .top-actions {
+        gap: 8px;
+    }
+
+    .top-icon {
+        display: none;
+    }
+
+    .user-menu {
+        font-size: 10px;
+        max-width: 130px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* MOBILE SIDEBAR */
+
+    .sidebar {
+        top: 65px;
+        width: 68px;
+        padding-top: 8px;
+    }
+
+    .nav-item {
+        height: 70px;
+        font-size: 9px;
+        gap: 5px;
+    }
+
+    .nav-item svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    /* MOBILE DASHBOARD */
+
+    .dashboard {
+        margin-left: 68px;
+        padding-top: 65px;
+    }
+
+    .filter-row {
+        height: 78px;
+        font-size: 14px;
+    }
+
+    .filter-row button {
+        font-size: 14px;
+    }
+
+    .columns {
+        width: calc(100% - 24px);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .profile-card,
+    .feed,
+    .right-column {
+        width: 100%;
+    }
+
+    .profile-card {
+        min-height: 0;
+        padding: 16px;
+    }
+
+    .profile-photo {
+        width: 95px;
+        height: 95px;
+        margin-bottom: 14px;
+    }
+
+    .profile-card h2 {
+        font-size: 13px;
+    }
+
+    .post-card {
+        padding: 18px 14px 0;
+    }
+
+    .post-heading {
+        gap: 10px;
+        min-height: 76px;
+    }
+
+    .post-avatar {
+        width: 45px;
+        height: 45px;
+    }
+
+    .post-heading h1 {
+        font-size: 14px;
+    }
+
+    .post-heading p {
+        font-size: 12px;
+    }
+
+    .right-column {
+        display: flex;
+    }
+
+    .panel {
+        width: 100%;
+    }
+}
